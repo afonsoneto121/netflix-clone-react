@@ -26,14 +26,15 @@ export const FeatureMovie = ({ item }: Props) => {
           </div>
 
           <div className="featured--buttons">
-            <a href="#" className="featured-watch-button">▶ Assistir</a>
-            <a href="#" className="featured-mylist-button">+ Minha Lista</a>
+            <a href="/" className="featured-watch-button">▶ Assistir</a>
+            <a href="/" className="featured-mylist-button">+ Minha Lista</a>
           </div>
           <div className="featured--genres">
             <strong>Gêneros: {item.genres?.map(item => item.name).join(', ')}</strong>
           </div>
         </div>
       </div>
+      
     </section>
   )
 }
