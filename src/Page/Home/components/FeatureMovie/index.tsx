@@ -6,7 +6,11 @@ type Props = {
 }
 export const FeatureMovie = ({ item }: Props) => {
   let firstDate = new Date(item.first_air_date || "");
+  let description = item.overview || "";
   
+  if (description.length > 256) {
+    description = description.substring(0,255)+" ..."
+  }
   return (
     <section className="featured" style={{
       backgroundImage: `url('https://image.tmdb.org/t/p/original${item.backdrop_path}')`,
@@ -22,7 +26,7 @@ export const FeatureMovie = ({ item }: Props) => {
             <div className="featured--sessons"> {item.number_of_seasons} temporada{item.number_of_seasons !== 1 ? 's' : ''}</div>
           </div>
           <div className="featured--description">
-            {item.overview}
+            {description}
           </div>
 
           <div className="featured--buttons">

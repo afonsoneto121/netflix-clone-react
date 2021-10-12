@@ -15,7 +15,7 @@ export const HomePage = () => {
       setMovieList(list);
 
       let originals = list.filter(item => item.slug === 'originals');
-      let random = Math.floor(Math.random() * originals[0].items.length - 1);
+      let random = Math.floor(Math.random() * (originals[0].items.length - 1));
       let chosen = originals[0].items[random];
       let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv');
 
