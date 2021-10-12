@@ -1,18 +1,29 @@
-import { useEffect } from 'react';
-import Tmdb from './service/Tmdb';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { Header } from './components/Header';
+import { HomePage } from './Page/Home';
 
 function App() {
-  useEffect( () => {
-    const loadAll = async () => {
-      let list = await Tmdb.getHomeList();
-
-      console.log(list)
-    }    
-    loadAll();
+  const [scrollY, setScrollY] = useState(false);
+  
+  useEffect(() => {
+    const eventScrollListener = () => {
+      if(window.scrollY > 50) {
+        setScrollY(true);
+      } else {
+        setScrollY(false);
+      }
+    }
+    window.addEventListener('scroll', eventScrollListener);
+    return () => {
+      window.removeEventListener('scroll', eventScrollListener);
+    }
   }, [])
   return (
-    <h1>Olá mundo</h1>
+    <>
+      <Header black={scrollY}/>
+      <HomePage />
+    </>
   );
 }
 
